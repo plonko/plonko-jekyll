@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2015-02-03
-title:  Welcome to Jekyll!
+title:  Project title
 categories: jekyll
 ---
 
