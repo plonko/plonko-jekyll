@@ -1,12 +1,11 @@
 .site-header {
     background-color: $green;
     height: 50vh;
-    padding-top: 35px;
-    padding-left: 30px;
+    padding-top: 2em;
+    padding-left: $gutter;
+    margin-bottom: 5em;
 }
 
 .site-title {
-    color: $white;
-    font-size: modular-scale(7);
     margin-left: -4px;
 }

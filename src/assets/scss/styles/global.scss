@@ -2,8 +2,13 @@ body {
     margin: 0;
 }
 
-.page-content {
+.container {
     @include outer-container;
+    padding-left: $gutter;
+    padding-right: $gutter;
+}
+
+.page-content {
     .trigger {
         @include span-columns(3);
         @include media($mobile) {
@@ -17,4 +22,13 @@ body {
             @include fill-parent;
         }
     }
+}
+
+.post {
+    margin-bottom: 9em;
+}
+
+.post-title {
+    text-align: right;
+    margin-bottom: 15px;
 }
