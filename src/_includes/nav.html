@@ -1,7 +1,7 @@
 <div class="nav-wrapper">
     <div class="nav">
         {% for post in site.posts %}
-            <a class="post-link" href="#{{ post.title  | downcase | replace: ' ', '-' }}">{{ post.title }}</a>
+            <a class="post-link" href="{{ site.baseurl }}/#{{ post.title  | downcase | replace: ' ', '-' }}">{{ post.title }}</a>
         {% endfor %}
         {% for my_page in site.pages %}
             {% if my_page.title != "404: Page not found" and my_page.layout == "page" %}

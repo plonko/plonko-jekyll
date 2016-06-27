@@ -106,16 +106,47 @@ gulp.task('styles', () =>
 // creates a Sourcemap for it
 // 'gulp scripts --prod' -- creates a index.js file from your JavaScript files,
 // minifies, gzips and cache busts it. Does not create a Sourcemap
-gulp.task('scripts', () =>
+gulp.task('scripts:main', () =>
   // NOTE: The order here is important since it's concatenated in order from
   // top to bottom, so you want vendor scripts etc on top
   gulp.src([
-    'src/assets/javascript/vendor.js',
     'src/assets/javascript/main.js'
   ])
-    .pipe($.newer('.tmp/assets/javascript/index.js', {dest: '.tmp/assets/javascript', ext: '.js'}))
+    .pipe($.newer('.tmp/assets/javascript/main.js', {dest: '.tmp/assets/javascript', ext: '.js'}))
     .pipe($.if(!argv.prod, $.sourcemaps.init()))
-    .pipe($.concat('index.js'))
+    .pipe($.concat('main.js'))
+    .pipe($.size({
+      title: 'scripts',
+      showFiles: true
+    }))
+    .pipe($.if(argv.prod, $.rename({suffix: '.min'})))
+    .pipe($.if(argv.prod, $.if('*.js', $.uglify({preserveComments: 'some'}))))
+    .pipe($.if(argv.prod, $.size({
+      title: 'minified scripts',
+      showFiles: true
+    })))
+    .pipe($.if(argv.prod, $.rev()))
+    .pipe($.if(!argv.prod, $.sourcemaps.write('.')))
+    .pipe($.if(argv.prod, gulp.dest('.tmp/assets/javascript')))
+    .pipe($.if(argv.prod, $.if('*.js', $.gzip({append: true}))))
+    .pipe($.if(argv.prod, $.size({
+      title: 'gzipped scripts',
+      gzip: true,
+      showFiles: true
+    })))
+    .pipe(gulp.dest('.tmp/assets/javascript'))
+    .pipe($.if(!argv.prod, browserSync.stream({match: '**/*.js'})))
+);
+
+gulp.task('scripts:library', () =>
+  // NOTE: The order here is important since it's concatenated in order from
+  // top to bottom, so you want library scripts etc on top
+  gulp.src([
+    'node_modules/waypoints/lib/noframework.waypoints.js'
+  ])
+    .pipe($.newer('.tmp/assets/javascript/library.js', {dest: '.tmp/assets/javascript', ext: '.js'}))
+    .pipe($.if(!argv.prod, $.sourcemaps.init()))
+    .pipe($.concat('library.js'))
     .pipe($.size({
       title: 'scripts',
       showFiles: true
@@ -231,7 +262,7 @@ gulp.task('serve', (done) => {
   // Watch various files for changes and do the needful
   gulp.watch(['src/**/*.md', 'src/**/*.html', 'src/**/*.yml'], gulp.series('build:jekyll', reload));
   gulp.watch(['src/**/*.xml', 'src/**/*.txt'], gulp.series('jekyll'));
-  gulp.watch('src/assets/javascript/**/*.js', gulp.series('scripts'));
+  gulp.watch('src/assets/javascript/**/*.js', gulp.series('scripts:main'));
   gulp.watch('src/assets/scss/**/*.scss', gulp.series('styles'));
   gulp.watch('src/assets/images/**/*', reload);
 });
@@ -240,7 +271,7 @@ gulp.task('serve', (done) => {
 // 'gulp assets --prod' -- cleans out your assets and rebuilds them with
 // production settings
 gulp.task('assets', gulp.series(
-  gulp.parallel('styles', 'scripts', 'fonts', 'images'),
+  gulp.parallel('styles', 'scripts:main', 'scripts:library', 'fonts', 'images'),
   gulp.series('copy:assets')
 ));
 

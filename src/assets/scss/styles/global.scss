@@ -4,10 +4,21 @@ body {
 
 .container {
     @include outer-container;
-    // padding-left: $gutter;
-    // padding-right: $gutter;
+    padding-left: $gutter;
+    padding-right: $gutter;
     // @include pad(0 default 0 default);
+    margin-left: 0;
+    // @media (min-width: 768px) {
+    //     width: 750px;
+    // }
+    // @media (min-width: 992px) {
+    //     width: 970px;
+    // }
+    // @media (min-width: $max-width) {
+    //     width: $max-width;
+    // }
 }
+
 
 .page-content {
     .nav-wrapper {
@@ -27,8 +38,11 @@ body {
 }
 
 .nav {
-    margin-top: 52px;
+    margin-top: 133px;
     margin-right: $gutter;
+    @include media($mobile) {
+        margin-right: 0;
+    }
     a {
         display: block;
         color: $base-font-color;
@@ -44,7 +58,8 @@ body {
 }
 
 .post {
-    margin-bottom: 9em;
+    padding-top: 5em;
+    margin-bottom: 4em;
 }
 
 .post-title {
