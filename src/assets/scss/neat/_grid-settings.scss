@@ -1,13 +1,20 @@
 @import "neat-helpers";
 
 $visual-grid: false !global;
+$visual-grid: true !global;
 
 // Change the grid settings
 // $column: 90px;
 // $gutter: 30px;
 // $grid-columns: 10;
-// $max-width: 1200px;
+$max-width: none;
 
 // Define your breakpoints
 $tablet: new-breakpoint(max-width 768px 8);
 $mobile: new-breakpoint(max-width 480px 4);
+
+.container {
+    // @include outer-container;
+    // padding-left: $gutter;
+    // padding-right: $gutter;
+}
