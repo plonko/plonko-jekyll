@@ -1,5 +1,5 @@
 <div class="nav-wrapper">
-    <div class="nav">
+    <div class="nav" id="js-waypoint-nav-trigger">
         {% for post in site.posts %}
             <a class="post-link" href="{{ site.baseurl }}/#{{ post.title  | downcase | replace: ' ', '-' }}">{{ post.title }}</a>
         {% endfor %}

@@ -2,12 +2,32 @@ body {
     margin: 0;
 }
 
+body:before {
+    left: $nav-width + 60px !important;
+    right: auto !important;
+    @include media($tablet) {
+        left: 0 !important;
+    }
+}
+
+// .container:before {
+//     position: absolute;
+//     right: auto !important;
+//     @include media($tablet) {
+//         left: 0 !important;
+//     }
+// }
+
 .container {
+    position: relative;
     @include outer-container;
-    padding-left: $gutter;
-    padding-right: $gutter;
+    margin-left: $nav-width + 60px;
+    @include media($tablet) {
+        margin-left: 0;
+    }
+    // padding-left: $gutter;
+    // padding-right: $gutter;
     // @include pad(0 default 0 default);
-    margin-left: 0;
     // @media (min-width: 768px) {
     //     width: 750px;
     // }
@@ -19,29 +39,35 @@ body {
     // }
 }
 
+.page-wrapper {
+    padding-left: $gutter;
+}
 
 .page-content {
-    .nav-wrapper {
-        @include span-columns(3);
-        @include media($mobile) {
-            @include fill-parent;
-            @include omega;
-        }
+    @include span-columns(9);
+    @include media($tablet) {
+        @include fill-parent;
     }
-    .wrapper {
-        @include span-columns(9);
-        // @include shift(0.5);
-        @include media($mobile) {
-            @include fill-parent;
-        }
+}
+
+.nav-wrapper {
+    @include media($mobile) {
+        @include fill-parent;
+        @include omega;
     }
 }
 
 .nav {
+    width: $nav-width;
+    float: left;
     margin-top: 133px;
-    margin-right: $gutter;
     @include media($mobile) {
         margin-right: 0;
+    }
+    &.fixed {
+        position: fixed;
+        margin-top: 0;
+        top: 0px;
     }
     a {
         display: block;
