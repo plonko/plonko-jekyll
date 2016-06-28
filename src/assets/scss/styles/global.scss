@@ -5,6 +5,7 @@ body {
 body:before {
     left: $nav-width + 60px !important;
     right: auto !important;
+    margin-left: $gutter;
     @include media($tablet) {
         left: 0 !important;
     }
@@ -26,7 +27,6 @@ body:before {
         margin-left: 0;
     }
     // padding-left: $gutter;
-    // padding-right: $gutter;
     // @include pad(0 default 0 default);
     // @media (min-width: 768px) {
     //     width: 750px;
@@ -41,6 +41,7 @@ body:before {
 
 .page-wrapper {
     padding-left: $gutter;
+    // padding-right: $gutter;
 }
 
 .page-content {
@@ -67,7 +68,7 @@ body:before {
     &.fixed {
         position: fixed;
         margin-top: 0;
-        top: 0px;
+        top: 30px;
     }
     a {
         display: block;
