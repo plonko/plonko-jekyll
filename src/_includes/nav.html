@@ -1,5 +1,5 @@
-<div class="nav-wrapper">
-    <div class="nav" id="js-waypoint-nav-trigger">
+<div class="nav-wrapper" id="js-waypoint-nav-trigger">
+    <div class="nav">
         {% for post in site.posts %}
             {% comment %}<a class="page-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>{% endcomment %}
             <a class="post-link" href="{{ site.baseurl }}/#{{ post.title | slugify }}">{{ post.title }}</a>

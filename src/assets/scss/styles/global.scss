@@ -64,9 +64,12 @@ body:before {
     @include media($mobile) {
         margin-right: 0;
     }
-    &.fixed {
+    .fixed & {
         position: fixed;
         top: 0px;
+        @include media($tablet) {
+            position: static;
+        }
     }
     a {
         display: block;
@@ -90,4 +93,16 @@ body:before {
 .post-title {
     text-align: right;
     margin-bottom: 15px;
+}
+
+.post-image {
+    @include span-columns(9 of 9);
+    @include omega;
+}
+
+.post-thumbnail {
+    @include span-columns(3 of 9);
+    @include omega(4n);
+    // margin-top: $gutter;
+    @include pad(default 0 default 0);
 }
