@@ -200,15 +200,22 @@ gulp.task('images', () =>
 gulp.task('post-images', () =>
   gulp.src('src/_posts/**/*.{jpg,png}')
     .pipe($.responsive({
-      '**/*': {
+      '**/*': [{
         width: 290,
         format: 'jpeg',
         rename: {
           suffix: '-thumbnail',
           extname: '.jpg'
         }
-      },
+      },{
+        format: 'jpeg',
+        rename: {
+          suffix: '-large',
+          extname: '.jpg'
+        }
+      }],
     },{
+      quality: 90,
       progressive: true,
       compressionLevel: 9,
       withMetadata: false,

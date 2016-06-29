@@ -8,14 +8,18 @@ layout: default
         {% for post in site.posts %}
 
             <div class="post" id="{{ post.title | slugify }}">
+
                 <h2 class="post-title">{{ post.title }}</h2>
 
                 <div class="post-content" itemprop="articleBody">
-                    <img src="http://placehold.it/800x500" class="post-image">
-
+                    {% for image in site.static_files %}
+                        {% if image.path contains 'large' and image.path contains post.slug | prepend: 'post-assets/images/' %}
+                            <img class="post-image" src="{{ site.baseurl }}{{ image.path }}" alt="{{ post.title }} image"/>
+                        {% endif %}
+                    {% endfor %}
                     <div class="post-thumbnails">
                         {% for image in site.static_files %}
-                            {% if image.path contains 'post-assets/images' %}
+                            {% if image.path contains 'thumbnail' and image.path contains post.slug | prepend: 'post-assets/images/' %}
                                 <img class="post-thumbnail" src="{{ site.baseurl }}{{ image.path }}" alt="{{ post.title }} image"/>
                             {% endif %}
                         {% endfor %}
