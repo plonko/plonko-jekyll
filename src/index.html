@@ -6,13 +6,24 @@ layout: default
 
     <div class="posts">
         {% for post in site.posts %}
+
             <div class="post" id="{{ post.title | slugify }}">
                 <h2 class="post-title">{{ post.title }}</h2>
+
                 <div class="post-content" itemprop="articleBody">
                     <img src="http://placehold.it/800x500" style="width: 100%;">
+
+                    {% for image in site.static_files %}
+                        {% if image.path contains 'post-assets/images' %}
+                            <img src="{{ site.baseurl }}{{ image.path }}" alt="image" />
+                        {% endif %}
+                    {% endfor %}
+
                     {{ post.content }}
                 </div>
+
             </div>
+
         {% endfor %}
     </div>
 

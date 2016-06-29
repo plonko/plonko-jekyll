@@ -197,25 +197,25 @@ gulp.task('images', () =>
     .pipe($.size({title: 'images'}))
 );
 
-gulp.task('post-images', function () {
-  return gulp.src('src/_posts/**/*.{jpg,png}')
+gulp.task('post-images', () =>
+  gulp.src('src/_posts/**/*.{jpg,png}')
     .pipe($.responsive({
       '**/*': {
         width: 290,
         format: 'jpeg',
         rename: {
           suffix: '-thumbnail',
-          extname: ".jpg"
+          extname: '.jpg'
         }
       },
-    }, {
+    },{
       progressive: true,
       compressionLevel: 9,
       withMetadata: false,
     }))
-    .pipe(gulp.dest('.tmp/assets/images'))
+    .pipe(gulp.dest('.tmp/jekyll/post-assets/images'))
     .pipe($.size({title: 'post-images'}))
-});
+);
 
 // 'gulp fonts' -- copies your fonts to the temporary assets directory
 gulp.task('fonts', () =>
