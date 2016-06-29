@@ -197,6 +197,26 @@ gulp.task('images', () =>
     .pipe($.size({title: 'images'}))
 );
 
+gulp.task('post-images', function () {
+  return gulp.src('src/_posts/**/*.{jpg,png}')
+    .pipe($.responsive({
+      '**/*': {
+        width: 290,
+        format: 'jpeg',
+        rename: {
+          suffix: '-thumbnail',
+          extname: ".jpg"
+        }
+      },
+    }, {
+      progressive: true,
+      compressionLevel: 9,
+      withMetadata: false,
+    }))
+    .pipe(gulp.dest('.tmp/assets/images'))
+    .pipe($.size({title: 'post-images'}))
+});
+
 // 'gulp fonts' -- copies your fonts to the temporary assets directory
 gulp.task('fonts', () =>
   gulp.src('src/assets/fonts/**/*')
@@ -265,13 +285,14 @@ gulp.task('serve', (done) => {
   gulp.watch('src/assets/javascript/**/*.js', gulp.series('scripts:main'));
   gulp.watch('src/assets/scss/**/*.scss', gulp.series('styles'));
   gulp.watch('src/assets/images/**/*', reload);
+  gulp.watch('src/_posts/**/*.{jpg,png}', reload);
 });
 
 // 'gulp assets' -- cleans out your assets and rebuilds them
 // 'gulp assets --prod' -- cleans out your assets and rebuilds them with
 // production settings
 gulp.task('assets', gulp.series(
-  gulp.parallel('styles', 'scripts:main', 'scripts:library', 'fonts', 'images'),
+  gulp.parallel('styles', 'scripts:main', 'scripts:library', 'fonts', 'images', 'post-images'),
   gulp.series('copy:assets')
 ));
 

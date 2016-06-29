@@ -2,7 +2,7 @@
 layout: post
 date: 2014-03-01
 title: Vans x Foot Locker SS13
-categories: jekyll example
+categories: projects
 ---
 
 <div class="message"> Howdy! This is an example blog post that shows several

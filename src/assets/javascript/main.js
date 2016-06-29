@@ -8,5 +8,5 @@ var waypoint = new Waypoint({
         console.log(this.element.id + ' triggers at ' + this.triggerPoint);
         this.element.classList.toggle('fixed');
     },
-    offset: 30
+    offset: 133
 })

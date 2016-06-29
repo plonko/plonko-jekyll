@@ -6,7 +6,7 @@ layout: default
 
     <div class="posts">
         {% for post in site.posts %}
-            <div class="post" id="{{ post.title | downcase | replace: ' ', '-' }}">
+            <div class="post" id="{{ post.title | slugify }}">
                 <h2 class="post-title">{{ post.title }}</h2>
                 <div class="post-content" itemprop="articleBody">
                     <img src="http://placehold.it/800x500" style="width: 100%;">

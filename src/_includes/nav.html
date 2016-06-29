@@ -1,7 +1,10 @@
 <div class="nav-wrapper">
     <div class="nav" id="js-waypoint-nav-trigger">
         {% for post in site.posts %}
-            <a class="post-link" href="{{ site.baseurl }}/#{{ post.title  | downcase | replace: ' ', '-' }}">{{ post.title }}</a>
+            {% comment %}
+                <a class="page-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            {% endcomment %}
+            <a class="post-link" href="{{ site.baseurl }}/#{{ post.title | slugify }}">{{ post.title }}</a>
         {% endfor %}
         {% for my_page in site.pages %}
             {% if my_page.title != "404: Page not found" and my_page.layout == "page" %}
