@@ -197,28 +197,28 @@ gulp.task('images', () =>
     .pipe($.size({title: 'images'}))
 );
 
+
+gulp.task('post-thumbsnails', () =>
+  gulp.src('src/_posts/**/*.{jpg,png}')
+    .pipe($.imageResize({
+      width : 290,
+      quality : 1
+    }))
+    .pipe($.rename({
+      suffix: '-thumbnail'
+    }))
+    .pipe(gulp.dest('.tmp/jekyll/post-assets/images'))
+    .pipe($.size({title: 'post-thumbsnails'}))
+);
+
 gulp.task('post-images', () =>
   gulp.src('src/_posts/**/*.{jpg,png}')
-    .pipe($.responsive({
-      '**/*': [{
-        width: 290,
-        format: 'jpeg',
-        rename: {
-          suffix: '-thumbnail',
-          extname: '.jpg'
-        }
-      },{
-        format: 'jpeg',
-        rename: {
-          suffix: '-large',
-          extname: '.jpg'
-        }
-      }],
-    },{
-      quality: 90,
-      progressive: true,
-      compressionLevel: 9,
-      withMetadata: false,
+    .pipe($.imageResize({
+      height : 595,
+      quality : 1
+    }))
+    .pipe($.rename({
+      suffix: '-large'
     }))
     .pipe(gulp.dest('.tmp/jekyll/post-assets/images'))
     .pipe($.size({title: 'post-images'}))
@@ -292,14 +292,14 @@ gulp.task('serve', (done) => {
   gulp.watch('src/assets/javascript/**/*.js', gulp.series('scripts:main'));
   gulp.watch('src/assets/scss/**/*.scss', gulp.series('styles'));
   gulp.watch('src/assets/images/**/*', reload);
-  gulp.watch('src/_posts/**/*.{jpg,png}', reload);
+  gulp.watch('src/_posts/**/*.{jpg,png}', gulp.series('post-thumbsnails', 'post-images', reload));
 });
 
 // 'gulp assets' -- cleans out your assets and rebuilds them
 // 'gulp assets --prod' -- cleans out your assets and rebuilds them with
 // production settings
 gulp.task('assets', gulp.series(
-  gulp.parallel('styles', 'scripts:main', 'scripts:library', 'fonts', 'images', 'post-images'),
+  gulp.parallel('styles', 'scripts:main', 'scripts:library', 'fonts', 'images', 'post-thumbsnails', 'post-images'),
   gulp.series('copy:assets')
 ));
 
