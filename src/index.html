@@ -12,17 +12,20 @@ layout: default
                 <h2 class="post-title">{{ post.title }}</h2>
 
                 <div class="post-content" itemprop="articleBody">
-                    {% for image in site.static_files %}
-                        {% if image.path contains 'large' and image.path contains post.slug | prepend: 'post-assets/images/' %}
-                            <img class="post-image" src="{{ site.baseurl }}{{ image.path }}" alt="{{ post.title }} image"/>
-                        {% endif %}
-                    {% endfor %}
-                    <div class="post-thumbnails">
+                    <div class="post-gallery">
                         {% for image in site.static_files %}
-                            {% if image.path contains 'thumbnail' and image.path contains post.slug | prepend: 'post-assets/images/' %}
-                                <img class="post-thumbnail" src="{{ site.baseurl }}{{ image.path }}" alt="{{ post.title }} image"/>
+                            {% if image.path contains 'large' and image.path contains post.slug | prepend: 'post-assets/images/' %}
+                                <img class="post-image" id="post-image" src="{{ site.baseurl }}{{ image.path }}" alt="{{ post.title }} image"/>
+                                {% break %}
                             {% endif %}
                         {% endfor %}
+                        <div class="post-thumbnails">
+                            {% for image in site.static_files %}
+                                {% if image.path contains 'large' and image.path contains post.slug | prepend: 'post-assets/images/' %}
+                                    <img class="post-thumbnail" src="{{ site.baseurl }}{{ image.path }}" alt="{{ post.title }} image"/>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
 
                     {{ post.content }}
