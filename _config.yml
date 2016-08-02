@@ -22,7 +22,7 @@ author:
 
 # _config.build.yml overwrites these options when you run `gulp build`
 # Enables future posts (posts with dates in the future) and drafts
-future: true
+future: false
 show_drafts: true
 # Disables the more accurate related posts for faster generating of the site
 lsi: false

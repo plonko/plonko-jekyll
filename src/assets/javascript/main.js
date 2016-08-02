@@ -6,13 +6,13 @@ console.log('Hello world!');
 var plonko = {
     waypoints: {
         init: function () {
-            new Waypoint({
+            return new Waypoint({
                 element: document.getElementById('js-waypoint-nav-trigger'),
                 handler: function() {
                     this.element.classList.toggle('fixed');
                 },
                 offset: 133
-            })
+            });
         }
     },
     galleries: {
@@ -25,17 +25,18 @@ var plonko = {
         _loopGalleries: function () {
             var galleryElems = this.settings.galleryElems;
             for(var i=0; i<galleryElems.length; i++) {
-                this._bindClicks(galleryElems[i]);
+                this._bindEvent(galleryElems[i]);
             }
         },
-        _bindClicks: function (elem){
-            elem.addEventListener('click', function(e) {
-                if(e.target && e.target.className == 'post-thumbnail') {
-                    var postImage = e.currentTarget.querySelector('.post-image');
-                    postImage.src = e.target.src;
-                }
-                e.stopPropagation();
-            });
+        _bindEvent: function (elem){
+            elem.addEventListener('click', this._onClick);
+        },
+        _onClick: function (e) {
+            if(e.target && e.target.className == 'post-thumbnail') {
+                var postImage = e.currentTarget.querySelector('.post-image');
+                postImage.src = e.target.src;
+            }
+            e.stopPropagation();
         }
     }
 }
