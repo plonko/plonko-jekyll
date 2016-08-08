@@ -11,7 +11,7 @@ var plonko = {
                 handler: function() {
                     this.element.classList.toggle('fixed');
                 },
-                offset: 133
+                offset: 0
             });
         }
     },
