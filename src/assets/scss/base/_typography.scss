@@ -1,25 +1,11 @@
-@include font-face("awake", "/assets/fonts/awake-bold-webfont", $file-formats: woff);
-@include font-face("geomanist-bold", "/assets/fonts/geomanist-bold-webfont", $file-formats: woff);
-@include font-face("geomanist-black", "/assets/fonts/geomanist-black-webfont", $file-formats: woff woff2);
-@include font-face("geomanist-medium", "/assets/fonts/geomanist-medium-webfont", $file-formats: woff woff2);
 @include font-face("geomanist-book", "/assets/fonts/geomanist-book-webfont", $file-formats: woff woff2);
-@include font-face("geomanist-regular", "/assets/fonts/geomanist-regular-webfont", $file-formats: woff woff2);
-@include font-face("league-spartan", "/assets/fonts/leaguespartan-bold", $file-formats: woff woff2);
-@import 'https://fonts.googleapis.com/css?family=Poppins:400,500,600,700';
+@import 'https://fonts.googleapis.com/css?family=Inconsolata';
 
-$heading-font-family: 'Poppins', sans-serif;
-$heading-font-family: 'geomanist-black', sans-serif;
-$heading-font-family: 'geomanist-bold', sans-serif;
-$heading-font-family: 'geomanist-medium', sans-serif;
-$heading-font-family: 'geomanist-regular', sans-serif;
-$heading-font-family: 'geomanist-book', sans-serif;
-$heading-font-family: 'awake', sans-serif;
-$heading-font-family: 'Avenir', sans-serif;
-$heading-font-family: 'league-spartan', sans-serif;
+$heading-font-family: 'Avenir', 'geomanist-book', sans-serif;
+$nav-font: 'Inconsolata', monospace;
 
 h1.site-title {
     color: $white;
-    // font-family: 'Avenir', sans-serif;
     font-size: modular-scale(7);
     font-weight: 900;
 }

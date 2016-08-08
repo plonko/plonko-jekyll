@@ -61,6 +61,7 @@ body:before {
     width: $nav-width;
     float: left;
     margin-top: 133px;
+    font-family: $nav-font;
     @include media($mobile) {
         margin-right: 0;
     }
