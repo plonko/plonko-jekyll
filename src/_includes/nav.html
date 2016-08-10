@@ -1,13 +1,31 @@
 <div class="nav-wrapper" id="js-waypoint-nav-trigger">
-    <div class="nav">
-        {% for post in site.posts %}
-            {% comment %}<a class="page-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>{% endcomment %}
-            <a class="post-link" href="{{ site.baseurl }}/#{{ post.title | slugify }}">{{ post.title }}</a>
-        {% endfor %}
-        {% for my_page in site.pages %}
-            {% if my_page.title != "404: Page not found" and my_page.layout == "page" %}
-                <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
-            {% endif %}
-        {% endfor %}
-    </div>
+    <nav class="nav">
+        <div class="posts">
+            {% for post in site.posts %}
+                {% comment %}<a class="page-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>{% endcomment %}
+                <a class="post-link" href="{{ site.baseurl }}/#{{ post.title | slugify }}">{{ post.title }}</a>
+            {% endfor %}
+        </div>
+
+        {% comment %} Basically the About page, but I love loops!{% endcomment %}
+        <div class="pages">
+            {% for my_page in site.pages %}
+                {% if my_page.title != "404: Page not found" and my_page.layout == "page" %}
+                    <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+                {% endif %}
+            {% endfor %}
+            <div class="social-media-list">
+                {% if site.author.twitter %}
+                    {% include icon-twitter.html username=site.author.twitter %}
+                {% endif %}
+                {% if site.author.github %}
+                    {% include icon-github.html username=site.author.github %}
+                {% endif %}
+                {% if site.author.linkedin %}
+                    {% include icon-linkedin.html username=site.author.linkedin %}
+                {% endif %}
+            </div>
+            <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+        </div>
+    </nav>
 </div>
