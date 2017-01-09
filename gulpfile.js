@@ -142,7 +142,8 @@ gulp.task('scripts:library', () =>
   // NOTE: The order here is important since it's concatenated in order from
   // top to bottom, so you want library scripts etc on top
   gulp.src([
-    'node_modules/waypoints/lib/noframework.waypoints.js'
+    'node_modules/waypoints/lib/noframework.waypoints.js',
+    'node_modules/lazysizes/lazysizes.js'
   ])
     .pipe($.newer('.tmp/assets/javascript/library.js', {dest: '.tmp/assets/javascript', ext: '.js'}))
     .pipe($.if(!argv.prod, $.sourcemaps.init()))
@@ -230,6 +231,12 @@ gulp.task('fonts', () =>
     .pipe($.size({title: 'fonts'}))
 );
 
+// 'gulp favi' -- copies your fonts to the temporary assets directory
+gulp.task('favi', () =>
+  gulp.src('src/assets/favicon.ico')
+    .pipe(gulp.dest('.tmp/'))
+);
+
 // 'gulp html' -- does nothing
 // 'gulp html --prod' -- minifies and gzips our HTML files
 gulp.task('html', () =>
@@ -298,7 +305,7 @@ gulp.task('serve', (done) => {
 // 'gulp assets --prod' -- cleans out your assets and rebuilds them with
 // production settings
 gulp.task('assets', gulp.series(
-  gulp.parallel('styles', 'scripts:main', 'scripts:library', 'fonts', 'images', 'post-thumbsnails', 'post-images'),
+  gulp.parallel('styles', 'scripts:main', 'scripts:library', 'fonts', 'favi', 'images', 'post-thumbsnails', 'post-images'),
   gulp.series('copy:assets')
 ));
 

@@ -5,25 +5,9 @@ title:  Defected Records
 categories: projects
 ---
 
-HTML5 scroll path journey to tell the brand story of the Skullcandy Supreme Sound range. A looped path follows a headphone cable on a journey through product features, brand ambassadors and hero products. Along the way there are videos, wallpaper and music downloads.
-
-Canvas rotations and bezier curve path movements elevate this HTML5 experience. This website harnessed brand new techniques and was first to market with these. Mouse tracking parallax lens flare elements on the ambassadors add another level of depth to these screens.
-
-Take the Supreme Sound journey here
-
-Role: Front end lead
-
-Lovie Awards 2013 Shortlist - Websites - Best Navigation
-Webby Awards 2013 Nominee
-Awwwards 2012 Site Of The Day
-FWA 2012 Public Shortlist
-Communication Arts 2012 Web Pick Of The Da
-U-Dox case study: <a href="http://u-dox.com/digital/skullcandy_supreme_sound_journey" target="_blank">Skullcandy - Supreme Sound Journey</a>
-<br>
-<br>
-I made a prototype to test for performance, and most of the front end build. I translated the vector path designed in Illustrator to a set of instructions for Canvas, and built the site as per the designs.
+I lead the front end build and QA, specifing what frameworks and technologies to use. I created IA diagrams, a functional specification and wireframes. I also specifically built the front end for the slide editor, which was based on Django admin and allowed the content manager to see what the multi-box slides would look like as they were putting them together. Later we built a full e-commerce implementation for them using Django Oscar, an opensource ecom framework for Django.
 <br><br>
-Made with: <a href="https://github.com/JoelBesada/scrollpath">ScrollPath.js</a>, <a href="https://github.com/jussi-kalliokoski/html5Preloader.js">HTML5Preloader.js</a>, <a href="https://github.com/cameronmcefee/plax/">Plax.js</a>, CSS3 transforms, <a href="http://lesscss.org/">LESS</a>.
+Made with: <a href="https://www.django-cms.org/en/">Django CMS</a>, <a href="http://oscarcommerce.com/">Django Oscar</a>.
 <br>
 <br>
-<a href="http://uk.skullcandy.com/supremesoundjourney/" target="_blank">Skull Candy Supreme Sound journey</a>
+<a href="http://defected.com/">defected.com</a><br></p>

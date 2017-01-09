@@ -34,5 +34,9 @@
     "gulp-uncss": "^1.0.0",
     "shelljs": "^0.6.0",
     "yargs": "^4.3.2"
+  },
+  "dependencies": {
+    "lazysizes": "^3.0.0-rc2",
+    "waypoints": "^4.0.1"
   }
 }

@@ -1,5 +1,5 @@
 <div class="nav-wrapper" id="js-waypoint-nav-trigger">
-    <nav class="nav">
+    <nav id="js-sidebar-nav" class="nav">
         <div class="posts">
             {% for post in site.posts %}
                 {% comment %}<a class="page-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>{% endcomment %}
@@ -27,5 +27,12 @@
             </div>
             <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
         </div>
+
+        <aside class="intro">
+            <p>Hello.</p>
+            <p>I’m a freelance frontend web developer living and working in London, and this is a selection of projects I've worked on.</p>
+
+            This site was made with <a href="http://jekyllrb.com/">Jekyll</a>.
+        </aside>
     </nav>
 </div>

@@ -4,12 +4,6 @@
 $heading-font-family: 'Avenir', 'geomanist-book', sans-serif;
 $nav-font: 'Inconsolata', monospace;
 
-h1.site-title {
-    color: $white;
-    font-size: modular-scale(7);
-    font-weight: 900;
-}
-
 body {
     color: $base-font-color;
     font-family: $base-font-family;
@@ -33,19 +27,32 @@ h2 {
     font-size: modular-scale(3);
 }
 
+h1.site-title {
+    color: $white;
+    font-size: modular-scale(7);
+    font-weight: 900;
+}
+
+h2.intro {
+    color: $white;
+    font-size: modular-scale(2);
+}
+
 p {
     margin: 0 0 $small-spacing;
 }
 
 a {
-    color: $action-color;
+    color: $base-font-color;
     text-decoration: none;
+    border-bottom: 1px solid #ccc;
     transition: color $base-duration $base-timing;
 
     &:active,
     &:focus,
     &:hover {
-        color: shade($action-color, 25%);
+        color: shade($base-font-color, 25%);
+        background-color: #ccc;
     }
 }
 

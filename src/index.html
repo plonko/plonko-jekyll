@@ -15,14 +15,14 @@ layout: default
                     <div class="post-gallery">
                         {% for image in site.static_files %}
                             {% if image.path contains 'large' and image.path contains post.slug | prepend: 'post-assets/images/' %}
-                                <img class="post-image" id="post-image" src="{{ site.baseurl }}{{ image.path }}" alt="{{ post.title }} image"/>
+                                <img class="post-image lazyload" id="post-image" data-src="{{ site.baseurl }}{{ image.path }}" alt="{{ post.title }} image"/>
                                 {% break %}
                             {% endif %}
                         {% endfor %}
                         <div class="post-thumbnails">
                             {% for image in site.static_files %}
                                 {% if image.path contains 'large' and image.path contains post.slug | prepend: 'post-assets/images/' %}
-                                    <img class="post-thumbnail" src="{{ site.baseurl }}{{ image.path }}" alt="{{ post.title }} image"/>
+                                    <img class="post-thumbnail lazyload" data-src="{{ site.baseurl }}{{ image.path }}" alt="{{ post.title }} image"/>
                                 {% endif %}
                             {% endfor %}
                         </div>

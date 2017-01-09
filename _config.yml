@@ -1,7 +1,7 @@
 # Title, decription, tagline and URL for your site
 # Can be used in your theme by calling 'site.title' and so on
 title: Plonko
-description: Web dev portfolio
+description: Plonko makes websites in London. These are some previous projects.
 url: http://www.plonko.co.uk/
 
 # Used so Jekyll outputs the site correctly so Gulp can do what it wants
@@ -24,7 +24,7 @@ author:
 # _config.build.yml overwrites these options when you run `gulp build`
 # Enables future posts (posts with dates in the future) and drafts
 future: false
-show_drafts: true
+show_drafts: false
 # Disables the more accurate related posts for faster generating of the site
 lsi: false
 # Only make the last 10 posts so generating isn't slow

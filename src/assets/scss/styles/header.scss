@@ -4,8 +4,15 @@
     padding-top: 2em;
     padding-left: $gutter;
     margin-bottom: 1px;
+    position: relative;
 }
 
 .site-title {
     margin-left: -4px;
+}
+
+h2.intro {
+    max-width: 20em;
+    position: absolute;
+    bottom: 0px;
 }

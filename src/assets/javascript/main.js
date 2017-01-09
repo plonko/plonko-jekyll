@@ -1,7 +1,6 @@
 'use strict';
 
-console.log('Hello world!');
-
+// console.log('Hello world!');
 
 var plonko = {
     waypoints: {

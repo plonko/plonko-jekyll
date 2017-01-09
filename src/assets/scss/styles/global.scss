@@ -48,6 +48,7 @@ body:before {
     @include media($tablet) {
         @include fill-parent;
     }
+    font-family: $nav-font;
 }
 
 .nav-wrapper {
@@ -62,12 +63,18 @@ body:before {
     float: left;
     margin-top: 133px;
     font-family: $nav-font;
+    @media (min-width: 768px) {
+        padding-bottom: 4em;
+    }
     @include media($mobile) {
         margin-right: 0;
+        margin-top: 3em;
     }
     .fixed & {
         position: fixed;
         top: 0px;
+        bottom: 0px;
+        overflow-y: auto;
         @include media($tablet) {
             position: static;
         }
@@ -75,7 +82,8 @@ body:before {
     .pages {
         margin-top: 3em;
     }
-    a {
+    .pages a,
+    .posts a {
         display: block;
         color: $base-font-color;
         border-bottom: $base-border;
@@ -87,6 +95,11 @@ body:before {
             background-color: aliceblue;
         }
     }
+
+    aside {
+        margin-top: 3em;
+        margin-left: 8px;
+    }
 }
 
 .post {
@@ -97,6 +110,9 @@ body:before {
 .post-title {
     text-align: right;
     margin-bottom: 15px;
+    @include media($mobile) {
+        text-align: left;
+    }
 }
 
 .post-gallery {
